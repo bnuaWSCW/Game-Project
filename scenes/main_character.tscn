@@ -57,4 +57,5 @@ shape = SubResource("CapsuleShape2D_ujy3b")
 sprite_frames = SubResource("SpriteFrames_xpnit")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.743593
+frame = 1
+frame_progress = 0.398217
