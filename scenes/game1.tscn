@@ -6,16 +6,16 @@
 
 [node name="Game" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(27, 0)
-zoom = Vector2(3, 3)
-position_smoothing_enabled = true
-
 [node name="TileMap" parent="." instance=ExtResource("2_tkgid")]
 
 [node name="Main Character" parent="." instance=ExtResource("1_u7mjl")]
 visible = false
 position = Vector2(1, -2)
 
+[node name="Camera2D" type="Camera2D" parent="Main Character"]
+position = Vector2(26, 2)
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_n451p")]
-position = Vector2(-19, 0)
+position = Vector2(0, -106)
