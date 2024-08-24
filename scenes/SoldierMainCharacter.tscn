@@ -13,26 +13,43 @@ resource_name = "Movement"
 script/source = "extends CharacterBody2D
 
 # Character Speed 
-const SPEED = 50.0
+const SPEED = 70.0
+const ACCEL = 7.5
+
+@onready var animated_sprite = $AnimatedSprite2D
 
 # Vector - based on my information, holds two float values(x, y)
 var input: Vector2
 
 # Reading the Players Input and Turning it into Directions
 func get_input():
-	input.x = Input.get_action_strength(\"ui_right\") - Input.get_action_strength(\"ui_left\")
-	input.y = Input.get_action_strength(\"ui_down\") - Input.get_action_strength(\"ui_up\")
-	return input.normalized()
+	input.x = Input.get_action_strength(\"right\") - Input.get_action_strength(\"left\")
+	input.y = Input.get_action_strength(\"down\") - Input.get_action_strength(\"up\")
+
+# Flips the character animation based on what direction the player is moving
+	if input.x > 0:
+		animated_sprite.flip_h = false
+	elif input.x < 0:
+		animated_sprite.flip_h = true 
 	
+
+# Animating the character to run based on what direction and input the player does.
+	#If no input, play idle animation
+	if input == Vector2.ZERO:
+		animated_sprite.play(\"Idle\")
+	# If there is atleast an input, play walking animation.
+	else:
+		animated_sprite.play(\"Walking\")
+	
+	return input.normalized()
+
+
 func _process(_delta):
 	var playerInput = get_input()
 	
-	velocity = playerInput * SPEED
+	# Lerp means linear interpolation - from my information it basically smooth values, essentially creating the smooth movement
+	velocity = lerp(velocity, playerInput * SPEED, _delta * ACCEL)
 	
-	
-	# Moving to the nearing whole pixel after moving
-	position.x = round(position.x)
-	position.y = round(position.y)
 
 # Handles Collisions anad Sliding Accorss Surfaces
 	move_and_slide()
@@ -374,7 +391,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walking",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ksb26"]
@@ -386,9 +403,9 @@ script = SubResource("GDScript_s8ep7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vvvfa")
-animation = &"Idle"
+animation = &"Walking"
 autoplay = "Idle"
-frame_progress = 0.434305
+frame_progress = 0.91568
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)

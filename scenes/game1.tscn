@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxlta3kp6xuw3"]
+[gd_scene load_steps=3 format=3 uid="uid://dxlta3kp6xuw3"]
 
-[ext_resource type="PackedScene" uid="uid://d23inc7hhcsap" path="res://scenes/main_character.tscn" id="1_u7mjl"]
 [ext_resource type="PackedScene" uid="uid://dybjlhucm4fs3" path="res://scenes/Epic_map.tscn" id="2_tkgid"]
 [ext_resource type="PackedScene" uid="uid://boobp3wdswvud" path="res://scenes/SoldierMainCharacter.tscn" id="3_n451p"]
 
@@ -8,14 +7,10 @@
 
 [node name="TileMap" parent="." instance=ExtResource("2_tkgid")]
 
-[node name="Main Character" parent="." instance=ExtResource("1_u7mjl")]
-visible = false
-position = Vector2(1, -2)
+[node name="SoldierMainCharacter" parent="." instance=ExtResource("3_n451p")]
+position = Vector2(0, -106)
 
-[node name="Camera2D" type="Camera2D" parent="Main Character"]
-position = Vector2(26, 2)
+[node name="Camera2D" type="Camera2D" parent="SoldierMainCharacter"]
+position = Vector2(0, -1)
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("3_n451p")]
-position = Vector2(0, -106)
