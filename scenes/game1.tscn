@@ -4,13 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://boobp3wdswvud" path="res://scenes/SoldierMainCharacter.tscn" id="3_n451p"]
 
 [node name="Game" type="Node2D"]
+y_sort_enabled = true
 
 [node name="TileMap" parent="." instance=ExtResource("2_tkgid")]
 
 [node name="SoldierMainCharacter" parent="." instance=ExtResource("3_n451p")]
 position = Vector2(0, -106)
-
-[node name="Camera2D" type="Camera2D" parent="SoldierMainCharacter"]
-position = Vector2(0, -1)
-zoom = Vector2(3, 3)
-position_smoothing_enabled = true
