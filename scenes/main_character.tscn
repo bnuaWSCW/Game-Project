@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d23inc7hhcsap"]
+[gd_scene load_steps=12 format=3 uid="uid://bkcukfbgawx66"]
 
 [ext_resource type="Texture2D" uid="uid://cmbfdkkyf7oy6" path="res://assets/2D Pixel Dungeon Asset Pack/Character_animation/priests_idle/priest3/v1/priest3_v1_1.png" id="1_1fshg"]
 [ext_resource type="Script" path="res://scenes/main_character.gd" id="1_oiin5"]

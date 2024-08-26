@@ -1,12 +1,10 @@
-[gd_scene load_steps=54 format=3 uid="uid://boobp3wdswvud"]
+[gd_scene load_steps=52 format=3 uid="uid://boobp3wdswvud"]
 
 [ext_resource type="Texture2D" uid="uid://ddogr5qan4fjh" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Free Soldier&Orc/Characters(100x100)/Soldier/Soldier/Soldier-Attack01.png" id="1_k5hk4"]
 [ext_resource type="Texture2D" uid="uid://qrneye8rmfk6" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Free Soldier&Orc/Characters(100x100)/Soldier/Soldier/Soldier-Attack02.png" id="2_1q7xv"]
 [ext_resource type="Texture2D" uid="uid://cfb6r5v2neoxd" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Free Soldier&Orc/Characters(100x100)/Soldier/Soldier/Soldier-Attack03.png" id="3_wf0q1"]
 [ext_resource type="Texture2D" uid="uid://c8hf40bxkjweq" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Free Soldier&Orc/Characters(100x100)/Soldier/Soldier/Soldier-Death.png" id="4_mfrha"]
-[ext_resource type="Texture2D" uid="uid://dmqbyl7n1ape6" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Free Soldier&Orc/Characters(100x100)/Soldier/Soldier/Soldier-Hurt.png" id="5_cc3os"]
-[ext_resource type="Texture2D" uid="uid://cln2grwln08f4" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Free Soldier&Orc/Characters(100x100)/Soldier/Soldier/Soldier-Idle.png" id="6_qoy2u"]
-[ext_resource type="Texture2D" uid="uid://ceyj0i7557f0g" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Free Soldier&Orc/Characters(100x100)/Soldier/Soldier/Soldier-Walk.png" id="7_846t3"]
+[ext_resource type="Texture2D" uid="uid://dx66j0dpk256f" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Free Soldier&Orc/Characters(100x100)/Soldier/Soldier/Soldier.png" id="5_1yt8c"]
 
 [sub_resource type="GDScript" id="GDScript_s8ep7"]
 resource_name = "Movement"
@@ -32,7 +30,6 @@ func get_input():
 	elif input.x < 0:
 		animated_sprite.flip_h = true 
 	
-
 # Animating the character to run based on what direction and input the player does.
 	#If no input, play idle animation
 	if input == Vector2.ZERO:
@@ -40,17 +37,14 @@ func get_input():
 	# If there is atleast an input, play walking animation.
 	else:
 		animated_sprite.play(\"Walking\")
-	
 	return input.normalized()
-
 
 func _process(_delta):
 	var playerInput = get_input()
 	
 	# Lerp means linear interpolation - from my information it basically smooth values, essentially creating the smooth movement
-	velocity = lerp(velocity, playerInput * SPEED, _delta * ACCEL)
+	velocity = playerInput * SPEED
 	
-
 # Handles Collisions anad Sliding Accorss Surfaces
 	move_and_slide()
 "
@@ -155,77 +149,77 @@ region = Rect2(200, 0, 100, 100)
 atlas = ExtResource("4_mfrha")
 region = Rect2(300, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6dyel"]
-atlas = ExtResource("5_cc3os")
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gttu"]
+atlas = ExtResource("5_1yt8c")
+region = Rect2(0, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bevlv"]
+atlas = ExtResource("5_1yt8c")
+region = Rect2(100, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukufr"]
+atlas = ExtResource("5_1yt8c")
+region = Rect2(200, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rv8dk"]
+atlas = ExtResource("5_1yt8c")
+region = Rect2(300, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6g3jk"]
+atlas = ExtResource("5_1yt8c")
 region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jvh2i"]
-atlas = ExtResource("5_cc3os")
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7tme"]
+atlas = ExtResource("5_1yt8c")
 region = Rect2(100, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uefyl"]
-atlas = ExtResource("5_cc3os")
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2gim"]
+atlas = ExtResource("5_1yt8c")
 region = Rect2(200, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5k0pa"]
-atlas = ExtResource("5_cc3os")
+[sub_resource type="AtlasTexture" id="AtlasTexture_emwvw"]
+atlas = ExtResource("5_1yt8c")
 region = Rect2(300, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d3tbp"]
-atlas = ExtResource("6_qoy2u")
-region = Rect2(0, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dx2vp"]
-atlas = ExtResource("6_qoy2u")
-region = Rect2(100, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yowm2"]
-atlas = ExtResource("6_qoy2u")
-region = Rect2(200, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7qy3w"]
-atlas = ExtResource("6_qoy2u")
-region = Rect2(300, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qhlqb"]
-atlas = ExtResource("6_qoy2u")
+[sub_resource type="AtlasTexture" id="AtlasTexture_5n4s1"]
+atlas = ExtResource("5_1yt8c")
 region = Rect2(400, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a6xbh"]
-atlas = ExtResource("6_qoy2u")
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfjbi"]
+atlas = ExtResource("5_1yt8c")
 region = Rect2(500, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lvq4i"]
-atlas = ExtResource("7_846t3")
-region = Rect2(0, 0, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lo37n"]
+atlas = ExtResource("5_1yt8c")
+region = Rect2(0, 100, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ew5tg"]
-atlas = ExtResource("7_846t3")
-region = Rect2(100, 0, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyvx6"]
+atlas = ExtResource("5_1yt8c")
+region = Rect2(100, 100, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2e4b5"]
-atlas = ExtResource("7_846t3")
-region = Rect2(200, 0, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_fb381"]
+atlas = ExtResource("5_1yt8c")
+region = Rect2(200, 100, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7qpnd"]
-atlas = ExtResource("7_846t3")
-region = Rect2(300, 0, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntxes"]
+atlas = ExtResource("5_1yt8c")
+region = Rect2(300, 100, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xrxwg"]
-atlas = ExtResource("7_846t3")
-region = Rect2(400, 0, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmnyi"]
+atlas = ExtResource("5_1yt8c")
+region = Rect2(400, 100, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v6oyf"]
-atlas = ExtResource("7_846t3")
-region = Rect2(500, 0, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyadk"]
+atlas = ExtResource("5_1yt8c")
+region = Rect2(500, 100, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_08d1j"]
-atlas = ExtResource("7_846t3")
-region = Rect2(600, 0, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7in1"]
+atlas = ExtResource("5_1yt8c")
+region = Rect2(600, 100, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uyytx"]
-atlas = ExtResource("7_846t3")
-region = Rect2(700, 0, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_kuxwg"]
+atlas = ExtResource("5_1yt8c")
+region = Rect2(700, 100, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vvvfa"]
 animations = [{
@@ -326,16 +320,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6dyel")
+"texture": SubResource("AtlasTexture_0gttu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jvh2i")
+"texture": SubResource("AtlasTexture_bevlv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uefyl")
+"texture": SubResource("AtlasTexture_ukufr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5k0pa")
+"texture": SubResource("AtlasTexture_rv8dk")
 }],
 "loop": true,
 "name": &"Getting Attacked",
@@ -343,51 +337,51 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d3tbp")
+"texture": SubResource("AtlasTexture_6g3jk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dx2vp")
+"texture": SubResource("AtlasTexture_x7tme")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yowm2")
+"texture": SubResource("AtlasTexture_m2gim")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7qy3w")
+"texture": SubResource("AtlasTexture_emwvw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qhlqb")
+"texture": SubResource("AtlasTexture_5n4s1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a6xbh")
+"texture": SubResource("AtlasTexture_sfjbi")
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lvq4i")
+"texture": SubResource("AtlasTexture_lo37n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ew5tg")
+"texture": SubResource("AtlasTexture_lyvx6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2e4b5")
+"texture": SubResource("AtlasTexture_fb381")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7qpnd")
+"texture": SubResource("AtlasTexture_ntxes")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xrxwg")
+"texture": SubResource("AtlasTexture_vmnyi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v6oyf")
+"texture": SubResource("AtlasTexture_uyadk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_08d1j")
+"texture": SubResource("AtlasTexture_u7in1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uyytx")
+"texture": SubResource("AtlasTexture_kuxwg")
 }],
 "loop": true,
 "name": &"Walking",
@@ -402,9 +396,9 @@ script = SubResource("GDScript_s8ep7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vvvfa")
-animation = &"Attack"
+animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.132599
+frame_progress = 0.411712
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
