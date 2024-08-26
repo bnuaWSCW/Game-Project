@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxlta3kp6xuw3"]
+[gd_scene load_steps=4 format=3 uid="uid://dxlta3kp6xuw3"]
 
+[ext_resource type="PackedScene" uid="uid://dfvos55sjixo0" path="res://scenes/enemy.tscn" id="1_frgy8"]
 [ext_resource type="PackedScene" uid="uid://dybjlhucm4fs3" path="res://scenes/Epic_map.tscn" id="2_tkgid"]
 [ext_resource type="PackedScene" uid="uid://boobp3wdswvud" path="res://scenes/SoldierMainCharacter.tscn" id="3_n451p"]
 
@@ -8,5 +9,8 @@ y_sort_enabled = true
 
 [node name="TileMap" parent="." instance=ExtResource("2_tkgid")]
 
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_frgy8")]
+position = Vector2(1, -55)
+
 [node name="SoldierMainCharacter" parent="." instance=ExtResource("3_n451p")]
-position = Vector2(0, -106)
+position = Vector2(0, -109)
