@@ -10,22 +10,35 @@
 resource_name = "Movement"
 script/source = "extends CharacterBody2D
 
-var enemy_in_range = false
-var enemy_cooldown = true
-var health = 100
-var player_alive = true
 
-# Character Speed 
-const SPEED = 70.0
-const ACCEL = 7.5
+# ------------------------------------ #
+#      VARIABLES AND CONSTANTS         #
+# ------------------------------------ #
 
+
+var enemy_in_range = false		# This variable is responsible to see if the enemy is within range
+var enemy_cooldown = true		# This variable is responsible for the cooldown of an enemy attack
+var health = 160				# Player Health
+var player_alive = true			# Player Life Status
+var attack_animation = false	# Responsible for animations(if no attack, idle animation)
+const SPEED = 70.0 				# Character Speed 
+
+# Node Referece
 @onready var animated_sprite = $AnimatedSprite2D
 
 # Vector - based on my information, holds two float values(x, y)
 var input: Vector2
 
+
+# ----------------------------------- #
+#              FUNCTIONS              #
+# ----------------------------------- #
+
+
+#-- DIRECTION FUNCTION --#
 # Reading the Players Input and Turning it into Directions
 func get_input():
+	# Movement direction based on the input the user pressed
 	input.x = Input.get_action_strength(\"right\") - Input.get_action_strength(\"left\")
 	input.y = Input.get_action_strength(\"down\") - Input.get_action_strength(\"up\")
 
@@ -36,53 +49,92 @@ func get_input():
 		animated_sprite.flip_h = true 
 	
 # Animating the character to run based on what direction and input the player does.
-	#If no input, play idle animation
+	# If no attack input, play idle animation
 	if input == Vector2.ZERO:
-		animated_sprite.play(\"Idle\")
+		if attack_animation == false:
+			animated_sprite.play(\"Idle\")
 	# If there is atleast an input, play walking animation.
 	else:
 		animated_sprite.play(\"Walking\")
+		
+	# Normalizing speed for the character(pressing two inputs will not increase speed)
 	return input.normalized()
 
+#-- MAIN PROCESS FUNCTION --#
 func _process(_delta):
+	# Updating movements
 	var playerInput = get_input()
 	
+	# When the enemy detects character, attack character.
 	if enemy_in_range:
 		enemy_attack()
-	
+		attack()
+		
+	# Responsible for what happens when the player has no more health.
 	if health<= 0:
 		player_alive = false
 		health = 0
 		print(\"Player has died\")
+		self.queue_free() # WILL CHANGE
 	
+	# Velocity is whatever the direction the player inputs multiplied by speed.	
 	velocity = playerInput * SPEED
-	
-# Handles Collisions anad Sliding Accorss Surfaces
+	# Handles Collisions anad Sliding Accorss Surfaces
 	move_and_slide()
 	
-
 func player():
 	pass
 
+#-- ENEMY ENTERING PLAYER HITBOX --#
 func _on_player_hitbox_body_entered(body):
+	# Checking if the body enetered is an enemy
 	if body.has_method(\"enemy\"):
 		enemy_in_range = true
 
-
+# -- ENEMY EXITING PLAYER HITBOX --#
 func _on_player_hitbox_body_exited(body):
+	# Checking if the body exited is an enemy
 	if body.has_method(\"enemy\"):
 		enemy_in_range = false
 		
+#-- ENEMY ATTACKS --#
 func enemy_attack():
+	# If the enemy is in the range to attack and the cooldown is finished, do the indented code.
 	if enemy_in_range and enemy_cooldown == true:
+		# Reduce health on player.
 		health = health - 20
+		# Putting the attack back to cooldown
 		enemy_cooldown = false
+		# Restarting the cooldown
 		$Attack_Cooldown.start()
 		print(health)
 
-
+#-- ENDING COOLDOWN --#
 func _on_attack_cooldown_timeout():
+	# Reseting the attack cooldown.
 	enemy_cooldown = true
+
+#-- PLAYER ATTACKS --#
+func attack():
+	# If the player inputed the attack input
+	if Input.is_action_just_pressed(\"Attack\"):
+		global.player_current_attack = true
+		# Supposed to be responsible for animations - does not work yet.
+		attack_animation = true
+		# Supposed to be resonsible for animations - does not work yet.
+		animated_sprite.play(\"Attack\")
+		# Starting the cooldown
+		$Deal_Attack_Cooldown.start()
+	else:
+		attack_animation = false
+
+#-- ENDING PLAYER ATTACK COOLDOWN --#
+func _on_deal_attack_cooldown_timeout():
+	# Stopping Cooldown
+	$Deal_Attack_Cooldown.stop()
+	# Reseting variables
+	global.player_current_attack = false
+	attack_animation = false
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hq5mk"]
@@ -278,9 +330,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fikhm")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack",
-"speed": 7.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -436,9 +488,10 @@ script = SubResource("GDScript_s8ep7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vvvfa")
-animation = &"Idle"
+animation = &"Attack"
 autoplay = "Idle"
-frame_progress = 0.411712
+frame = 5
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
@@ -458,6 +511,10 @@ shape = SubResource("CircleShape2D_8cpio")
 
 [node name="Attack_Cooldown" type="Timer" parent="."]
 
+[node name="Deal_Attack_Cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="body_entered" from="Player Hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="Player Hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="Attack_Cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="Deal_Attack_Cooldown" to="." method="_on_deal_attack_cooldown_timeout"]
