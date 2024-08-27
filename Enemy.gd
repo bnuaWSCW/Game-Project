@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # The Speed of the Character
-@export var SPEED = 30
+@export var SPEED = 50
 @onready var animated_sprite = $AnimatedSprite2D
 
 # This checks if the enemy should be chasing the character
