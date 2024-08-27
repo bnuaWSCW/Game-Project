@@ -10,6 +10,9 @@ var player_chase = false
 # Refers to the character when they enter the detection area.
 var player = null
 
+var health = 100
+var player_in_zone = false
+
 func _physics_process(delta):
 	# If player_chase is true, enemy should chase the character.
 	if player_chase:
@@ -40,3 +43,14 @@ func _on_dectection_area_body_exited(body):
 	player = null
 	player_chase = false
 
+func enemy():
+	pass
+
+
+func _on_enemy_hitbox_body_entered(body):
+	if body.has_method("player"):
+		player_in_zone = true
+
+
+func _on_enemy_hitbox_body_exited(body):
+	pass # Replace with function body.
