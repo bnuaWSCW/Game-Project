@@ -249,9 +249,8 @@ shape = SubResource("CapsuleShape2D_vdhgf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mqjtu")
-animation = &"Idle"
+animation = &"Attack"
 autoplay = "Idle"
-frame_progress = 0.255453
 
 [node name="Dectection Area" type="Area2D" parent="."]
 collision_layer = 2
