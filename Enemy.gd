@@ -24,17 +24,24 @@ var take_damage = true								# If and when the enemy can take damage
 #-- MAIN PROCESS FUNCTION --#
 func _physics_process(delta):
 	
+
+	
 	# Damage from player attacks
 	damage()
-	
+
 	# If player_chase is true, enemy should chase the character.
 	if player_chase:
 		
 		# Moving to player based on speed
 		position += (player.position - position)/SPEED
 		
-		# When moving to player, play the walking animation
-		animated_sprite.play("Walk")
+		# When moving to player, check if player is in attack zone. 
+		if player_in_zone == true:
+			# If player is in attack zone, play attack animation
+			animated_sprite.play("Attack")
+		else:
+			# If player is not in attack zone, play walking animation.
+			animated_sprite.play("Walk")
 		
 		# Refer to testing in Development Log
 		move_and_collide(Vector2(0,0))
@@ -69,25 +76,29 @@ func _on_enemy_hitbox_body_entered(body):
 	if body.has_method("player"):
 		player_in_zone = true
 
+			
+
 #-- PLAYER EXITING ENEMY ATTACK AREA --#
 func _on_enemy_hitbox_body_exited(body):
 	# If the body exiting is actually the player
 	if body.has_method("player"):
 		player_in_zone = false
 
+
+
 #-- TAKING DAMAGE FROM PLAYER --#
 func damage():
 	# When the player is in the attack zone and is inputing an attack input
 	if player_in_zone and global.player_current_attack == true:
 		if take_damage == true:
-			# Decrease health
+			# Reduce health
 			health = health -20
-			# Cooldown starting to prevent quantities of attacks
+			# Cooldown starting to prevent simultaneous attacks
 			$Damage_Cooldown.start()
 			# Preventing attacks until cooldown finishs
 			take_damage = false
 			# Enemy health status
-			print("slime health =", health)
+			print("orc health =", health)
 			if health == 0:
 				self.queue_free() 		# WILL DELETE 
 
