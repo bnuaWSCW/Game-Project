@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxlta3kp6xuw3"]
+[gd_scene load_steps=5 format=3 uid="uid://dxlta3kp6xuw3"]
 
 [ext_resource type="PackedScene" uid="uid://dybjlhucm4fs3" path="res://scenes/Epic_map.tscn" id="2_tkgid"]
 [ext_resource type="PackedScene" uid="uid://boobp3wdswvud" path="res://scenes/SoldierMainCharacter.tscn" id="3_n451p"]
 [ext_resource type="PackedScene" uid="uid://dfvos55sjixo0" path="res://scenes/enemy.tscn" id="3_vjbxu"]
+[ext_resource type="PackedScene" uid="uid://b4ha8xi0gc0cg" path="res://scenes/coin.tscn" id="4_7gci4"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -14,3 +15,19 @@ position = Vector2(0, -109)
 
 [node name="Enemy" parent="." instance=ExtResource("3_vjbxu")]
 position = Vector2(59, 42)
+
+[node name="Coin" parent="." instance=ExtResource("4_7gci4")]
+z_index = 5
+position = Vector2(248, 123)
+
+[node name="Coin2" parent="." instance=ExtResource("4_7gci4")]
+z_index = 5
+position = Vector2(247, 17)
+
+[node name="Coin3" parent="." instance=ExtResource("4_7gci4")]
+z_index = 5
+position = Vector2(-73, 68)
+
+[node name="Coin4" parent="." instance=ExtResource("4_7gci4")]
+z_index = 5
+position = Vector2(107, 198)
