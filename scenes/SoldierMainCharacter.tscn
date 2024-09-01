@@ -73,13 +73,10 @@ func _process(_delta):
 	# Updating movements
 	var playerInput = get_input()
 	
-<<<<<<< HEAD
 	# When the enemy detects character, attack character.
-=======
 	attack()
 	
 	# When the enemy detects character, attack character and reduce health.
->>>>>>> baf40331ae390f51c74a0185f7a678fb0ac3a67f
 	if enemy_in_range:
 		enemy_attack()
 
@@ -121,14 +118,11 @@ func enemy_attack():
 		health = health - 20
 		# Putting the attack back to cooldown
 		enemy_cooldown = false
-<<<<<<< HEAD
 		# Restarting the cooldown
 		$Attack_Cooldown.start()
 		print(health)
-=======
 
 		print(\"Player health =\", health)
->>>>>>> baf40331ae390f51c74a0185f7a678fb0ac3a67f
 
 #-- ENDING COOLDOWN --#
 func _on_attack_cooldown_timeout():
