@@ -18,7 +18,7 @@ script/source = "extends CharacterBody2D
 
 var enemy_in_range = false		# This variable is responsible to see if the enemy is within range
 var enemy_cooldown = true		# This variable is responsible for the cooldown of an enemy attack
-var health = 160				# Player Health
+var health = 16000				# Player Health
 var player_alive = true			# Player Life Status
 var attack_animation = false	# Responsible for animations(if no attack, idle animation)
 const SPEED = 70.0 				# Character Speed 
@@ -48,14 +48,22 @@ func get_input():
 	elif input.x < 0:
 		animated_sprite.flip_h = true 
 	
-# Animating the character to run based on what direction and input the player does.
-	# If no attack input, play idle animation
-	if input == Vector2.ZERO:
-		if attack_animation == false:
+
+
+	if attack_animation == false:
+		if Input.is_action_just_pressed(\"Attack\"):
+			animated_sprite.play(\"attack\")
+			$Deal_Attack_Cooldown.start()
+		elif Input.is_action_just_pressed(\"up\"):
+			animated_sprite.play(\"Walking\")
+		elif Input.is_action_just_pressed(\"left\"):
+			animated_sprite.play(\"Walking\")
+		elif Input.is_action_just_pressed(\"right\"):
+			animated_sprite.play(\"Walking\")
+		elif Input.is_action_just_pressed(\"down\"):
+			animated_sprite.play(\"Walking\")
+		elif input == Vector2.ZERO:
 			animated_sprite.play(\"Idle\")
-	# If there is atleast an input, play walking animation.
-	else:
-		animated_sprite.play(\"Walking\")
 		
 	# Normalizing speed for the character(pressing two inputs will not increase speed)
 	return input.normalized()
@@ -65,10 +73,16 @@ func _process(_delta):
 	# Updating movements
 	var playerInput = get_input()
 	
+<<<<<<< HEAD
 	# When the enemy detects character, attack character.
+=======
+	attack()
+	
+	# When the enemy detects character, attack character and reduce health.
+>>>>>>> baf40331ae390f51c74a0185f7a678fb0ac3a67f
 	if enemy_in_range:
 		enemy_attack()
-		attack()
+
 		
 	# Responsible for what happens when the player has no more health.
 	if health<= 0:
@@ -101,13 +115,20 @@ func _on_player_hitbox_body_exited(body):
 func enemy_attack():
 	# If the enemy is in the range to attack and the cooldown is finished, do the indented code.
 	if enemy_in_range and enemy_cooldown == true:
+		# Restarting the cooldown
+		$Attack_Cooldown.start()
 		# Reduce health on player.
 		health = health - 20
 		# Putting the attack back to cooldown
 		enemy_cooldown = false
+<<<<<<< HEAD
 		# Restarting the cooldown
 		$Attack_Cooldown.start()
 		print(health)
+=======
+
+		print(\"Player health =\", health)
+>>>>>>> baf40331ae390f51c74a0185f7a678fb0ac3a67f
 
 #-- ENDING COOLDOWN --#
 func _on_attack_cooldown_timeout():
@@ -122,7 +143,7 @@ func attack():
 		# Supposed to be responsible for animations - does not work yet.
 		attack_animation = true
 		# Supposed to be resonsible for animations - does not work yet.
-		animated_sprite.play(\"Attack\")
+		animated_sprite.play(\"attack\")
 		# Starting the cooldown
 		$Deal_Attack_Cooldown.start()
 	else:
@@ -136,30 +157,6 @@ func _on_deal_attack_cooldown_timeout():
 	global.player_current_attack = false
 	attack_animation = false
 "
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hq5mk"]
-atlas = ExtResource("1_k5hk4")
-region = Rect2(0, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vrhse"]
-atlas = ExtResource("1_k5hk4")
-region = Rect2(100, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_62bya"]
-atlas = ExtResource("1_k5hk4")
-region = Rect2(200, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dt7k0"]
-atlas = ExtResource("1_k5hk4")
-region = Rect2(300, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_14s06"]
-atlas = ExtResource("1_k5hk4")
-region = Rect2(400, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fikhm"]
-atlas = ExtResource("1_k5hk4")
-region = Rect2(500, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ejdbi"]
 atlas = ExtResource("2_1q7xv")
@@ -309,31 +306,32 @@ region = Rect2(600, 100, 100, 100)
 atlas = ExtResource("5_1yt8c")
 region = Rect2(700, 100, 100, 100)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hq5mk"]
+atlas = ExtResource("1_k5hk4")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrhse"]
+atlas = ExtResource("1_k5hk4")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62bya"]
+atlas = ExtResource("1_k5hk4")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt7k0"]
+atlas = ExtResource("1_k5hk4")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14s06"]
+atlas = ExtResource("1_k5hk4")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fikhm"]
+atlas = ExtResource("1_k5hk4")
+region = Rect2(500, 0, 100, 100)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_vvvfa"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hq5mk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vrhse")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_62bya")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dt7k0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_14s06")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fikhm")
-}],
-"loop": false,
-"name": &"Attack",
-"speed": 12.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ejdbi")
@@ -474,6 +472,29 @@ animations = [{
 "loop": true,
 "name": &"Walking",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hq5mk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrhse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62bya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dt7k0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14s06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fikhm")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 12.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtvgh"]
@@ -483,15 +504,15 @@ size = Vector2(12, 5)
 radius = 15.0333
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+y_sort_enabled = true
 collision_layer = 3
 script = SubResource("GDScript_s8ep7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_vvvfa")
-animation = &"Attack"
+animation = &"attack"
 autoplay = "Idle"
-frame = 5
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
@@ -500,7 +521,7 @@ shape = SubResource("RectangleShape2D_mtvgh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -1)
-zoom = Vector2(3, 3)
+zoom = Vector2(5, 5)
 position_smoothing_enabled = true
 
 [node name="Player Hitbox" type="Area2D" parent="."]
@@ -510,6 +531,7 @@ position = Vector2(-1, -2)
 shape = SubResource("CircleShape2D_8cpio")
 
 [node name="Attack_Cooldown" type="Timer" parent="."]
+wait_time = 1.1
 
 [node name="Deal_Attack_Cooldown" type="Timer" parent="."]
 wait_time = 0.5
