@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://boobp3wdswvud" path="res://scenes/SoldierMainCharacter.tscn" id="3_n451p"]
 [ext_resource type="PackedScene" uid="uid://dfvos55sjixo0" path="res://scenes/enemy.tscn" id="3_vjbxu"]
 [ext_resource type="PackedScene" uid="uid://b4ha8xi0gc0cg" path="res://scenes/coin.tscn" id="4_7gci4"]
-[ext_resource type="PackedScene" uid="uid://cgb015mti48l5" path="res://scenes/level_two_enemy.tscn" id="5_llchk"]
+[ext_resource type="PackedScene" uid="uid://d3c4rrsxjrpva" path="res://scenes/Level_2_orc.tscn" id="5_0f1xo"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -54,5 +54,5 @@ position = Vector2(264.477, 199.24)
 [node name="Enemy8" parent="." instance=ExtResource("3_vjbxu")]
 position = Vector2(-71.5234, 43.6398)
 
-[node name="Necromancer" parent="." instance=ExtResource("5_llchk")]
-position = Vector2(-1, -16)
+[node name="level_2_orc" parent="." instance=ExtResource("5_0f1xo")]
+position = Vector2(7, 4)
