@@ -124,6 +124,7 @@ func enemy_attack():
 
 		print(\"Player health =\", health)
 
+
 #-- ENDING COOLDOWN --#
 func _on_attack_cooldown_timeout():
 	# Reseting the attack cooldown.
