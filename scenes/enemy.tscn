@@ -236,10 +236,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yko8d"]
-radius = 36.0
+radius = 43.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fft2v"]
-radius = 13.0
+radius = 27.0
 
 [node name="Enemy" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -255,6 +255,7 @@ autoplay = "Idle"
 frame_progress = 0.810049
 
 [node name="Dectection Area" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
@@ -262,6 +263,7 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_yko8d")
 
 [node name="Enemy Hitbox" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy Hitbox"]
 position = Vector2(0, -1)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxlta3kp6xuw3"]
+[gd_scene load_steps=6 format=3 uid="uid://dxlta3kp6xuw3"]
 
 [ext_resource type="PackedScene" uid="uid://dybjlhucm4fs3" path="res://scenes/Epic_map.tscn" id="2_tkgid"]
 [ext_resource type="PackedScene" uid="uid://boobp3wdswvud" path="res://scenes/SoldierMainCharacter.tscn" id="3_n451p"]
 [ext_resource type="PackedScene" uid="uid://dfvos55sjixo0" path="res://scenes/enemy.tscn" id="3_vjbxu"]
 [ext_resource type="PackedScene" uid="uid://b4ha8xi0gc0cg" path="res://scenes/coin.tscn" id="4_7gci4"]
+[ext_resource type="PackedScene" uid="uid://cgb015mti48l5" path="res://scenes/level_two_enemy.tscn" id="5_llchk"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -14,7 +15,7 @@ y_sort_enabled = true
 position = Vector2(0, -109)
 
 [node name="Enemy" parent="." instance=ExtResource("3_vjbxu")]
-position = Vector2(59, 42)
+position = Vector2(53, 25)
 
 [node name="Coin" parent="." instance=ExtResource("4_7gci4")]
 z_index = 5
@@ -52,3 +53,6 @@ position = Vector2(264.477, 199.24)
 
 [node name="Enemy8" parent="." instance=ExtResource("3_vjbxu")]
 position = Vector2(-71.5234, 43.6398)
+
+[node name="Necromancer" parent="." instance=ExtResource("5_llchk")]
+position = Vector2(-1, -16)

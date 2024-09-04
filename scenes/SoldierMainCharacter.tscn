@@ -511,6 +511,7 @@ frame = 5
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 y_sort_enabled = true
 position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_mtvgh")
@@ -521,6 +522,7 @@ zoom = Vector2(5, 5)
 position_smoothing_enabled = true
 
 [node name="Player Hitbox" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player Hitbox"]
 position = Vector2(-1, -2)
@@ -532,7 +534,11 @@ wait_time = 1.1
 [node name="Deal_Attack_Cooldown" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="Level_2_Cooldown" type="Timer" parent="."]
+wait_time = 1.1
+
 [connection signal="body_entered" from="Player Hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="Player Hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="Attack_Cooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="Deal_Attack_Cooldown" to="." method="_on_deal_attack_cooldown_timeout"]
+[connection signal="timeout" from="Level_2_Cooldown" to="." method="_on_attack_cooldown_timeout"]
