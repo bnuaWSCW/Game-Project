@@ -15,6 +15,7 @@ y_sort_enabled = true
 position = Vector2(0, -109)
 
 [node name="Enemy" parent="." instance=ExtResource("3_vjbxu")]
+visible = false
 position = Vector2(53, 25)
 
 [node name="Coin" parent="." instance=ExtResource("4_7gci4")]
@@ -34,24 +35,31 @@ z_index = 5
 position = Vector2(107, 198)
 
 [node name="Enemy2" parent="." instance=ExtResource("3_vjbxu")]
+visible = false
 position = Vector2(14, 65)
 
 [node name="Enemy3" parent="." instance=ExtResource("3_vjbxu")]
+visible = false
 position = Vector2(1.87659, 120.44)
 
 [node name="Enemy4" parent="." instance=ExtResource("3_vjbxu")]
+visible = false
 position = Vector2(167.677, 128.64)
 
 [node name="Enemy5" parent="." instance=ExtResource("3_vjbxu")]
+visible = false
 position = Vector2(215.077, 75.4398)
 
 [node name="Enemy6" parent="." instance=ExtResource("3_vjbxu")]
+visible = false
 position = Vector2(225.477, 16.0398)
 
 [node name="Enemy7" parent="." instance=ExtResource("3_vjbxu")]
+visible = false
 position = Vector2(264.477, 199.24)
 
 [node name="Enemy8" parent="." instance=ExtResource("3_vjbxu")]
+visible = false
 position = Vector2(-71.5234, 43.6398)
 
 [node name="level_2_orc" parent="." instance=ExtResource("5_0f1xo")]
