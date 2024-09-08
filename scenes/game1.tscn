@@ -37,7 +37,7 @@ position = Vector2(107, 198)
 position = Vector2(14, 65)
 
 [node name="Enemy3" parent="." instance=ExtResource("3_vjbxu")]
-position = Vector2(1.87659, 120.44)
+position = Vector2(59, 52)
 
 [node name="Enemy4" parent="." instance=ExtResource("3_vjbxu")]
 position = Vector2(167.677, 128.64)
@@ -55,4 +55,4 @@ position = Vector2(264.477, 199.24)
 position = Vector2(-71.5234, 43.6398)
 
 [node name="level_3_orc" parent="." instance=ExtResource("5_2nfb7")]
-position = Vector2(0, -33)
+position = Vector2(-68, 190)
