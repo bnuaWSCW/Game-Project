@@ -7,7 +7,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vdhgf"]
 radius = 5.0
-height = 14.0
+height = 18.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c0s2b"]
 atlas = ExtResource("1_p58ox")
@@ -127,7 +127,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -167,10 +167,11 @@ script = ExtResource("1_cen6h")
 shape = SubResource("CapsuleShape2D_vdhgf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 0)
+scale = Vector2(1.09375, 1.09375)
 sprite_frames = SubResource("SpriteFrames_e6ogu")
-animation = &"Idle"
+animation = &"Attack"
 autoplay = "Idle"
-frame_progress = 0.753959
 
 [node name="Dectection Area" type="Area2D" parent="."]
 visible = false

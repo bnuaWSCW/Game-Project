@@ -7,11 +7,11 @@ extends CharacterBody2D
 
 # ------------------------------------------------------------------------------------------------------------#
 
-@export var SPEED = 50 								# The Speed of the Character
+@export var SPEED = 45 								# The Speed of the Character
 @onready var animated_sprite = $AnimatedSprite2D	# Enemy animated sprite
 var player_chase = false							# This checks if the enemy should be chasing the character
 var player = null									# Refers to the character when they enter the detection area.
-var health = 150									# Enemy health
+var health = 175									# Enemy health
 var player_in_zone = false							# Refers to if the player is in the enemy's attack range
 var take_damage = true								# If and when the enemy can take damage
 
