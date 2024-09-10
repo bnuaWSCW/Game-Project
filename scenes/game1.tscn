@@ -11,9 +11,6 @@ y_sort_enabled = true
 
 [node name="TileMap" parent="." instance=ExtResource("2_tkgid")]
 
-[node name="SoldierMainCharacter" parent="." instance=ExtResource("3_n451p")]
-position = Vector2(0, -109)
-
 [node name="Enemy" parent="." instance=ExtResource("3_vjbxu")]
 position = Vector2(53, 25)
 
@@ -56,3 +53,6 @@ position = Vector2(-71.5234, 43.6398)
 
 [node name="level_3_orc" parent="." instance=ExtResource("5_2nfb7")]
 position = Vector2(-68, 190)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_n451p")]
+position = Vector2(-2, -106)
