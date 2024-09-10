@@ -7,7 +7,7 @@ extends CharacterBody2D
 
 # ------------------------------------------------------------------------------------------------------------#
 
-@export var SPEED = 45 								# The Speed of the Character
+@export var SPEED = 47 								# The Speed of the Character
 @onready var animated_sprite = $AnimatedSprite2D	# Enemy animated sprite
 var player_chase = false							# This checks if the enemy should be chasing the character
 var player = null									# Refers to the character when they enter the detection area.
@@ -38,6 +38,7 @@ func _physics_process(delta):
 		# When moving to player, check if player is in attack zone. 
 		if player_in_zone == true:
 			# If player is in attack zone, play attack animation
+			$Animation_Cooldown.start()
 			animated_sprite.play("Attack")
 		else:
 			# If player is not in attack zone, play walking animation.
@@ -105,3 +106,7 @@ func damage():
 #-- COOLDOWN ENDING --#
 func _on_damage_cooldown_timeout():
 	take_damage = true
+
+
+func _on_animation_cooldown_timeout():
+	player_in_zone = true

@@ -11,7 +11,7 @@ extends CharacterBody2D
 @onready var animated_sprite = $AnimatedSprite2D	# Enemy animated sprite
 var player_chase = false							# This checks if the enemy should be chasing the character
 var player = null									# Refers to the character when they enter the detection area.
-var health = 100									# Enemy health
+var health = 40										# Enemy health
 var player_in_zone = false							# Refers to if the player is in the enemy's attack range
 var take_damage = true								# If and when the enemy can take damage
 
@@ -99,7 +99,7 @@ func damage():
 			take_damage = false
 			# Enemy health status
 			print("orc health =", health)
-			if health == 0:
+			if health <= 0:
 				self.queue_free() 		# WILL DELETE 
 
 #-- COOLDOWN ENDING --#
