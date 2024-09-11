@@ -110,7 +110,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Attack",
-"speed": 10.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -190,8 +190,11 @@ shape = SubResource("CircleShape2D_fft2v")
 
 [node name="Damage_Cooldown" type="Timer" parent="."]
 
+[node name="Animation_Cooldown" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Dectection Area" to="." method="_on_dectection_area_body_entered"]
 [connection signal="body_exited" from="Dectection Area" to="." method="_on_dectection_area_body_exited"]
 [connection signal="body_entered" from="Enemy Hitbox" to="." method="_on_enemy_hitbox_body_entered"]
 [connection signal="body_exited" from="Enemy Hitbox" to="." method="_on_enemy_hitbox_body_exited"]
 [connection signal="timeout" from="Damage_Cooldown" to="." method="_on_damage_cooldown_timeout"]
+[connection signal="timeout" from="Animation_Cooldown" to="." method="_on_animation_cooldown_timeout"]

@@ -21,7 +21,7 @@ var enemy_cooldown = true		# This variable is responsible for the cooldown of an
 var health = 16000				# Player Health
 var player_alive = true			# Player Life Status
 var attack_animation = false	# Responsible for animations(if no attack, idle animation)
-const SPEED = 70.0 				# Character Speed 
+const SPEED = 100.0 				# Character Speed 
 
 # Node Referece
 @onready var animated_sprite = $AnimatedSprite2D
@@ -530,7 +530,6 @@ position = Vector2(-1, -2)
 shape = SubResource("CircleShape2D_8cpio")
 
 [node name="Attack_Cooldown" type="Timer" parent="."]
-wait_time = 1.1
 
 [node name="Deal_Attack_Cooldown" type="Timer" parent="."]
 wait_time = 0.5
