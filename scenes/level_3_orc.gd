@@ -99,7 +99,7 @@ func damage():
 			# Preventing attacks until cooldown finishs
 			take_damage = false
 			# Enemy health status
-			print("Level 2 orc health =", health)
+			print("Level 3 orc health =", health)
 			if health <= 0:
 				self.queue_free() 		# WILL DELETE 
 
