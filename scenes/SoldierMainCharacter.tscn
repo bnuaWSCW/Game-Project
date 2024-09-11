@@ -500,7 +500,7 @@ radius = 15.0333
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 y_sort_enabled = true
-collision_layer = 3
+collision_layer = 11
 script = SubResource("GDScript_s8ep7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
