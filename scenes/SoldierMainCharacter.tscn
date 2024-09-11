@@ -49,11 +49,15 @@ func get_input():
 		animated_sprite.flip_h = true 
 	
 
-
+# Simple If statements:
 	if attack_animation == false:
-		if Input.is_action_just_pressed(\"Attack\"):
+		
+		# If the player attacks, play the attack animation and start a cooldown for the animation and the attack.
+		if Input.is_action_pressed(\"Attack\"):
 			animated_sprite.play(\"attack\")
 			$Deal_Attack_Cooldown.start()
+			
+		# If not attacking, do this if statement: if player is wanting to move up, down, left or right, play the walking animation.
 		elif Input.is_action_just_pressed(\"up\"):
 			animated_sprite.play(\"Walking\")
 		elif Input.is_action_just_pressed(\"left\"):
@@ -62,6 +66,8 @@ func get_input():
 			animated_sprite.play(\"Walking\")
 		elif Input.is_action_just_pressed(\"down\"):
 			animated_sprite.play(\"Walking\")
+			
+		# If not input at all, play the idle animation
 		elif input == Vector2.ZERO:
 			animated_sprite.play(\"Idle\")
 		
@@ -88,7 +94,7 @@ func _process(_delta):
 		print(\"Player has died\")
 		self.queue_free() # WILL CHANGE
 	
-	# Velocity is whatever the direction the player inputs multiplied by speed.	
+	# Velocity is whatever the direction the player inputs multiplied by the speed speed can be changed by the variable above.	
 	velocity = playerInput * SPEED
 	# Handles Collisions anad Sliding Accorss Surfaces
 	move_and_slide()
@@ -120,7 +126,6 @@ func enemy_attack():
 		enemy_cooldown = false
 		# Restarting the cooldown
 		$Attack_Cooldown.start()
-		print(health)
 
 		print(\"Player health =\", health)
 
@@ -151,6 +156,8 @@ func _on_deal_attack_cooldown_timeout():
 	# Reseting variables
 	global.player_current_attack = false
 	attack_animation = false
+
+
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ejdbi"]
@@ -486,10 +493,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fikhm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6g3jk")
 }],
 "loop": false,
 "name": &"attack",
-"speed": 18.0
+"speed": 13.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtvgh"]
@@ -508,8 +518,6 @@ y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_vvvfa")
 animation = &"attack"
 autoplay = "Idle"
-frame = 5
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
