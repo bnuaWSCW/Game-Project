@@ -1,63 +1,67 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxlta3kp6xuw3"]
+[gd_scene load_steps=6 format=3 uid="uid://dxlta3kp6xuw3"]
 
 [ext_resource type="PackedScene" uid="uid://boobp3wdswvud" path="res://scenes/SoldierMainCharacter.tscn" id="3_n451p"]
 [ext_resource type="PackedScene" uid="uid://dfvos55sjixo0" path="res://scenes/enemy.tscn" id="3_vjbxu"]
 [ext_resource type="PackedScene" uid="uid://b4ha8xi0gc0cg" path="res://scenes/coin.tscn" id="4_7gci4"]
 [ext_resource type="PackedScene" uid="uid://bsqtij5h8e45j" path="res://scenes/level_3_orc.tscn" id="5_2nfb7"]
-[ext_resource type="PackedScene" uid="uid://sj7mmwrugu4e" path="res://scenes/scenetrigger.tscn" id="5_5cyf0"]
-[ext_resource type="PackedScene" uid="uid://buyntrg8f33eu" path="res://scenes/Epic_map2.tscn" id="5_7e0ly"]
+[ext_resource type="PackedScene" uid="uid://dybjlhucm4fs3" path="res://scenes/Epic_map.tscn" id="5_2v5hd"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
 
-[node name="Enemy" parent="." instance=ExtResource("3_vjbxu")]
-position = Vector2(53, 25)
-
-[node name="Coin" parent="." instance=ExtResource("4_7gci4")]
-z_index = 5
+[node name="Coins" type="Node2D" parent="."]
 position = Vector2(248, 123)
 
-[node name="Coin2" parent="." instance=ExtResource("4_7gci4")]
+[node name="Coin3" parent="Coins" instance=ExtResource("4_7gci4")]
 z_index = 5
-position = Vector2(247, 17)
+position = Vector2(-321, -55)
 
-[node name="Coin3" parent="." instance=ExtResource("4_7gci4")]
+[node name="Coin" parent="Coins" instance=ExtResource("4_7gci4")]
 z_index = 5
-position = Vector2(-73, 68)
 
-[node name="Coin4" parent="." instance=ExtResource("4_7gci4")]
+[node name="Coin2" parent="Coins" instance=ExtResource("4_7gci4")]
 z_index = 5
-position = Vector2(107, 198)
+position = Vector2(-1, -106)
 
-[node name="Enemy2" parent="." instance=ExtResource("3_vjbxu")]
-position = Vector2(14, 65)
+[node name="Coin4" parent="Coins" instance=ExtResource("4_7gci4")]
+z_index = 5
+position = Vector2(-141, 75)
 
-[node name="Enemy3" parent="." instance=ExtResource("3_vjbxu")]
-position = Vector2(59, 52)
+[node name="Enemy" type="Node2D" parent="."]
+position = Vector2(53, 25)
 
-[node name="Enemy4" parent="." instance=ExtResource("3_vjbxu")]
-position = Vector2(167.677, 128.64)
+[node name="Enemy" parent="Enemy" instance=ExtResource("3_vjbxu")]
 
-[node name="Enemy5" parent="." instance=ExtResource("3_vjbxu")]
-position = Vector2(215.077, 75.4398)
+[node name="Enemy2" parent="Enemy" instance=ExtResource("3_vjbxu")]
+position = Vector2(-39, 40)
 
-[node name="Enemy6" parent="." instance=ExtResource("3_vjbxu")]
-position = Vector2(225.477, 16.0398)
+[node name="Enemy3" parent="Enemy" instance=ExtResource("3_vjbxu")]
+position = Vector2(6, 27)
 
-[node name="Enemy7" parent="." instance=ExtResource("3_vjbxu")]
-position = Vector2(264.477, 199.24)
+[node name="Enemy4" parent="Enemy" instance=ExtResource("3_vjbxu")]
+position = Vector2(114.677, 103.64)
 
-[node name="Enemy8" parent="." instance=ExtResource("3_vjbxu")]
-position = Vector2(-71.5234, 43.6398)
+[node name="Enemy5" parent="Enemy" instance=ExtResource("3_vjbxu")]
+position = Vector2(162.077, 50.4398)
+
+[node name="Enemy6" parent="Enemy" instance=ExtResource("3_vjbxu")]
+position = Vector2(20, -118)
+
+[node name="Enemy7" parent="Enemy" instance=ExtResource("3_vjbxu")]
+position = Vector2(211.477, 174.24)
+
+[node name="Enemy8" parent="Enemy" instance=ExtResource("3_vjbxu")]
+position = Vector2(-124.523, 18.6398)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_n451p")]
+position = Vector2(9, -95)
 
 [node name="level_3_orc" parent="." instance=ExtResource("5_2nfb7")]
 position = Vector2(-68, 190)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("3_n451p")]
-position = Vector2(-2, -106)
-
-[node name="Scenetrigger" parent="." instance=ExtResource("5_5cyf0")]
-position = Vector2(-80, -115)
-
-[node name="TileMap" parent="." instance=ExtResource("5_7e0ly")]
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(8, -143)
+color = Color(0.0846899, 0.0846899, 0.0846899, 1)
+
+[node name="TileMap" parent="." instance=ExtResource("5_2v5hd")]
+position = Vector2(2, 5)
