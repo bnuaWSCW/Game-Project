@@ -4996,7 +4996,7 @@ sources/2 = SubResource("TileSetAtlasSource_8xnqg")
 
 [node name="TileMap" type="TileMap"]
 y_sort_enabled = true
-position = Vector2(-4, -47)
+position = Vector2(-5, -41)
 tile_set = SubResource("TileSet_4usuc")
 format = 2
 layer_0/name = "Block layer"

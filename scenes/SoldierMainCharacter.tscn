@@ -514,6 +514,13 @@ y_sort_enabled = true
 collision_layer = 11
 script = SubResource("GDScript_s8ep7")
 
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1, 0)
+energy = 0.91
+shadow_enabled = true
+texture = ExtResource("6_5s5q7")
+texture_scale = 0.32
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_vvvfa")
@@ -527,7 +534,6 @@ position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_mtvgh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -1)
 zoom = Vector2(5, 5)
 position_smoothing_enabled = true
 
@@ -545,12 +551,6 @@ wait_time = 0.5
 
 [node name="Level_2_Cooldown" type="Timer" parent="."]
 wait_time = 1.1
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-energy = 0.91
-shadow_enabled = true
-texture = ExtResource("6_5s5q7")
-texture_scale = 0.32
 
 [connection signal="body_entered" from="Player Hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="Player Hitbox" to="." method="_on_player_hitbox_body_exited"]
