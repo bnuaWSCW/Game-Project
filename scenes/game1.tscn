@@ -42,9 +42,6 @@ position = Vector2(167.677, 128.64)
 [node name="Enemy5" parent="." instance=ExtResource("3_vjbxu")]
 position = Vector2(215.077, 75.4398)
 
-[node name="Enemy6" parent="." instance=ExtResource("3_vjbxu")]
-position = Vector2(73, -93)
-
 [node name="Enemy7" parent="." instance=ExtResource("3_vjbxu")]
 position = Vector2(264.477, 199.24)
 
@@ -52,7 +49,7 @@ position = Vector2(264.477, 199.24)
 position = Vector2(-71.523, 43.6398)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_n451p")]
-position = Vector2(9, -95)
+position = Vector2(2, -96)
 
 [node name="level_3_orc" parent="." instance=ExtResource("5_2nfb7")]
 position = Vector2(-68, 190)
