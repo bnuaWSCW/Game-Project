@@ -547,10 +547,10 @@ wait_time = 0.5
 wait_time = 1.1
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-energy = 0.3
+energy = 0.91
 shadow_enabled = true
 texture = ExtResource("6_5s5q7")
-texture_scale = 0.7
+texture_scale = 0.32
 
 [connection signal="body_entered" from="Player Hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="Player Hitbox" to="." method="_on_player_hitbox_body_exited"]
