@@ -1,34 +1,113 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv0kytf3o3q2h"]
+[gd_scene load_steps=12 format=3 uid="uid://dv0kytf3o3q2h"]
 
 [ext_resource type="Script" path="res://Menu.gd" id="1_ldlb5"]
+
+[sub_resource type="Theme" id="Theme_o3qww"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rho2d"]
+bg_color = Color(0, 0.882353, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w75yo"]
+bg_color = Color(0, 0.686275, 0.858824, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 1, 1, 1)
+
+[sub_resource type="Theme" id="Theme_yaqfr"]
+Button/styles/hover = SubResource("StyleBoxFlat_rho2d")
+Button/styles/normal = SubResource("StyleBoxFlat_w75yo")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_21r1j"]
+bg_color = Color(0, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pyo83"]
+bg_color = Color(0, 0.792157, 0.878431, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 1, 1, 1)
+
+[sub_resource type="Theme" id="Theme_uuphs"]
+Button/styles/hover = SubResource("StyleBoxFlat_21r1j")
+Button/styles/normal = SubResource("StyleBoxFlat_pyo83")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_012ux"]
+bg_color = Color(0, 1, 0.678431, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s812d"]
+bg_color = Color(0, 0.839216, 0.678431, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 1, 1, 1)
+
+[sub_resource type="Theme" id="Theme_oqbjw"]
+Button/styles/hover = SubResource("StyleBoxFlat_012ux")
+Button/styles/normal = SubResource("StyleBoxFlat_s812d")
 
 [node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 3.0
+offset_right = 3.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_o3qww")
 script = ExtResource("1_ldlb5")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(750, 250)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 200.0
+offset_top = 266.0
+offset_right = 950.0
+offset_bottom = 608.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_vertical = 0
 
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+theme = SubResource("Theme_yaqfr")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
 text = "Play"
 
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+theme = SubResource("Theme_uuphs")
+theme_override_font_sizes/font_size = 50
 text = "Options"
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+theme = SubResource("Theme_oqbjw")
+theme_override_font_sizes/font_size = 50
 text = "Quit"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
