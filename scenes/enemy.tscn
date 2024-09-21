@@ -1,6 +1,6 @@
 [gd_scene load_steps=39 format=3 uid="uid://dfvos55sjixo0"]
 
-[ext_resource type="Script" path="res://Enemy.gd" id="1_cgqu0"]
+[ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_cgqu0"]
 [ext_resource type="Texture2D" uid="uid://cogtwgstgt30m" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Free Soldier&Orc/Characters(100x100)/Orc/Orc/Orc-Attack01.png" id="2_2vul8"]
 [ext_resource type="Texture2D" uid="uid://b0j8x5vcp7t2o" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Free Soldier&Orc/Characters(100x100)/Orc/Orc/Orc-Death.png" id="3_dkewe"]
 [ext_resource type="Texture2D" uid="uid://ktrwbixx2wok" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Free Soldier&Orc/Characters(100x100)/Orc/Orc/Orc-Hurt.png" id="4_nwonl"]

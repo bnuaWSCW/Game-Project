@@ -1,8 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://dv0kytf3o3q2h"]
+[gd_scene load_steps=15 format=3 uid="uid://dv0kytf3o3q2h"]
 
-[ext_resource type="Script" path="res://Menu.gd" id="1_ldlb5"]
+[ext_resource type="Script" path="res://scripts/Menu.gd" id="1_ldlb5"]
+[ext_resource type="FontFile" uid="uid://cl1xp115cqeqh" path="res://assets/Peaberry-Font-v2.0/Peaberry Font Family/Peaberry Base/PeaberryBase.ttf" id="2_ryyf6"]
+[ext_resource type="PackedScene" uid="uid://2gwi624yrvs7" path="res://scenes/music_for_menu.tscn" id="3_wbnca"]
 
 [sub_resource type="Theme" id="Theme_o3qww"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7vjk"]
+bg_color = Color(0.0941176, 0.254902, 0.839216, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rho2d"]
 bg_color = Color(0, 0.882353, 1, 1)
@@ -13,7 +18,7 @@ border_width_bottom = 5
 border_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w75yo"]
-bg_color = Color(0, 0.686275, 0.858824, 1)
+bg_color = Color(0, 0.517647, 0.858824, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -21,6 +26,7 @@ border_width_bottom = 5
 border_color = Color(0, 1, 1, 1)
 
 [sub_resource type="Theme" id="Theme_yaqfr"]
+default_font = ExtResource("2_ryyf6")
 Button/styles/hover = SubResource("StyleBoxFlat_rho2d")
 Button/styles/normal = SubResource("StyleBoxFlat_w75yo")
 
@@ -53,7 +59,7 @@ border_width_bottom = 5
 border_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s812d"]
-bg_color = Color(0, 0.839216, 0.678431, 1)
+bg_color = Color(0, 0.84, 0.7, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -76,6 +82,12 @@ grow_vertical = 2
 theme = SubResource("Theme_o3qww")
 script = ExtResource("1_ldlb5")
 
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1149.0
+offset_bottom = 645.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_f7vjk")
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(750, 250)
 layout_mode = 0
@@ -94,21 +106,58 @@ layout_mode = 2
 theme = SubResource("Theme_yaqfr")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 50
-text = "Play"
+text = "PLAY"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Play"]
+visible = false
+layout_mode = 0
+offset_left = 231.0
+offset_top = 47.0
+offset_right = 273.0
+offset_bottom = 63.0
+text = "PLAY"
 
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme = SubResource("Theme_uuphs")
+theme_override_fonts/font = ExtResource("2_ryyf6")
 theme_override_font_sizes/font_size = 50
-text = "Options"
+text = "OPTIONS"
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme = SubResource("Theme_oqbjw")
+theme_override_fonts/font = ExtResource("2_ryyf6")
 theme_override_font_sizes/font_size = 50
-text = "Quit"
+text = "QUIT"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+offset_left = 104.0
+offset_top = 114.0
+offset_right = 1035.0
+offset_bottom = 214.0
+theme_override_colors/font_color = Color(0, 0, 0.898039, 1)
+theme_override_fonts/font = ExtResource("2_ryyf6")
+theme_override_font_sizes/font_size = 100
+text = "DUNGEON CRAWLER"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 104.0
+offset_top = 100.0
+offset_right = 1035.0
+offset_bottom = 200.0
+theme_override_colors/font_color = Color(0, 0.905882, 0.988235, 1)
+theme_override_fonts/font = ExtResource("2_ryyf6")
+theme_override_font_sizes/font_size = 100
+text = "DUNGEON CRAWLER"
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("3_wbnca")]
+autoplay = false
+script = null
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
