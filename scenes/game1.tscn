@@ -59,4 +59,3 @@ position = Vector2(8, -143)
 color = Color(0, 0, 0, 1)
 
 [node name="TileMap" parent="." instance=ExtResource("5_2v5hd")]
-position = Vector2(-1, 2)
