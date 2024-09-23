@@ -15,6 +15,7 @@ var health = 40										# Enemy health
 var player_in_zone = false							# Refers to if the player is in the enemy's attack range
 var take_damage = true								# If and when the enemy can take damage
 
+
 # ------------------------------------------------------------------------------------------------------------#
 
 # ----------------------------------- #
@@ -24,7 +25,6 @@ var take_damage = true								# If and when the enemy can take damage
 #-- MAIN PROCESS FUNCTION --#
 func _physics_process(delta):
 	
-
 	
 	# Damage from player attacks
 	damage()
