@@ -516,7 +516,7 @@ script = SubResource("GDScript_s8ep7")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1, 0)
-energy = 0.76
+energy = 0.85
 shadow_enabled = true
 texture = ExtResource("6_5s5q7")
 texture_scale = 0.42

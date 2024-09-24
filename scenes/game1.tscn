@@ -13,7 +13,7 @@ y_sort_enabled = true
 script = ExtResource("1_lbrff")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_n451p")]
-position = Vector2(2, -96)
+position = Vector2(-1, -130)
 
 [node name="Camera2D2" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(0, -2)
@@ -52,7 +52,7 @@ position = Vector2(-141, 75)
 position = Vector2(53, 25)
 
 [node name="Enemy2" parent="." instance=ExtResource("3_vjbxu")]
-position = Vector2(14, 65)
+position = Vector2(32, 35)
 
 [node name="Enemy3" parent="." instance=ExtResource("3_vjbxu")]
 position = Vector2(59, 52)
