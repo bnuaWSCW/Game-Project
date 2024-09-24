@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://2gwi624yrvs7"]
 
 [ext_resource type="AudioStream" uid="uid://lc8i0clfxnfp" path="res://Success Story Akiko Shioyama Sprint Results Screen Music.mp3" id="1_p2qwf"]
-[ext_resource type="Script" path="res://scenes/music_for_menu.gd" id="2_ds0io"]
+[ext_resource type="Script" path="res://scripts/music_for_menu.gd" id="2_ds0io"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
 stream = ExtResource("1_p2qwf")

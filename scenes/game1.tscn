@@ -24,11 +24,11 @@ position_smoothing_enabled = true
 process_mode = 2
 visible = false
 z_index = 1
-offset_left = -21.0
-offset_top = -8.0
-offset_right = 384.0
-offset_bottom = 171.0
-scale = Vector2(0.1, 0.1)
+offset_left = -43.0
+offset_top = -22.0
+offset_right = -43.0
+offset_bottom = -22.0
+scale = Vector2(0.3, 0.3)
 
 [node name="Coins" type="Node2D" parent="."]
 position = Vector2(248, 123)
@@ -72,8 +72,8 @@ position = Vector2(-71.523, 43.6398)
 [node name="level_3_orc" parent="." instance=ExtResource("5_2nfb7")]
 position = Vector2(-68, 190)
 
+[node name="TileMap" parent="." instance=ExtResource("5_2v5hd")]
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(8, -143)
 color = Color(0, 0, 0, 1)
-
-[node name="TileMap" parent="." instance=ExtResource("5_2v5hd")]

@@ -4,7 +4,9 @@ extends Control
 func _on_play_pressed():
 	get_tree().change_scene_to_file("res://scenes/game1.tscn")
 	MusicForMenu.stop()
-	
+
+
+
 #when the player presses options, change scenes to options menu
 func _on_options_pressed():
 	get_tree().change_scene_to_file("res://scenes/options_menu.tscn")
