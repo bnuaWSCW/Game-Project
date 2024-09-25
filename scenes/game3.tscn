@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://v0alrcywpn4d"]
+
+[ext_resource type="PackedScene" uid="uid://7btig8ojwsv0" path="res://scenes/epic_map_3.tscn" id="1_e2v8v"]
+[ext_resource type="PackedScene" uid="uid://boobp3wdswvud" path="res://scenes/SoldierMainCharacter.tscn" id="2_754oa"]
+[ext_resource type="PackedScene" uid="uid://c6du2hp23u03x" path="res://scenes/pause_menu.tscn" id="3_b2lsl"]
+[ext_resource type="PackedScene" uid="uid://b4ha8xi0gc0cg" path="res://scenes/coin.tscn" id="4_setes"]
+
+[node name="game3" type="Node2D"]
+
+[node name="Epic_map3" parent="." instance=ExtResource("1_e2v8v")]
+position = Vector2(0, 62)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_754oa")]
+position = Vector2(-1, 1)
+
+[node name="Camera2D2" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(0, -2)
+zoom = Vector2(7, 7)
+position_smoothing_enabled = true
+
+[node name="Pause Menu" parent="CharacterBody2D/Camera2D2" instance=ExtResource("3_b2lsl")]
+process_mode = 2
+visible = false
+z_index = 1
+offset_left = -43.0
+offset_top = -22.0
+offset_right = -43.0
+offset_bottom = -22.0
+scale = Vector2(0.3, 0.3)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(8, -143)
+color = Color(0, 0, 0, 1)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(102, 178)
+
+[node name="Coin" parent="Node2D" instance=ExtResource("4_setes")]
+
+[node name="Coin2" parent="Node2D" instance=ExtResource("4_setes")]
+position = Vector2(-4, -118)
+
+[node name="Coin3" parent="Node2D" instance=ExtResource("4_setes")]
+position = Vector2(-195, -79)
+
+[node name="Coin4" parent="Node2D" instance=ExtResource("4_setes")]
+position = Vector2(-170, 46)
+
+[node name="Coin5" parent="Node2D" instance=ExtResource("4_setes")]
+position = Vector2(107, 40)
+
+[node name="Coin6" parent="Node2D" instance=ExtResource("4_setes")]
+position = Vector2(218, 145)
+
+[node name="Coin7" parent="Node2D" instance=ExtResource("4_setes")]
+position = Vector2(284, 61)
+
+[node name="Coin8" parent="Node2D" instance=ExtResource("4_setes")]
+position = Vector2(251, -55)
+
+[node name="Coin9" parent="Node2D" instance=ExtResource("4_setes")]
+position = Vector2(224, 231)
+
+[node name="Coin10" parent="Node2D" instance=ExtResource("4_setes")]
+position = Vector2(355, 165)
